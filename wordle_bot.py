@@ -1,4 +1,9 @@
 from itertools import product
+import random
+from wordfreq import word_frequency
+
+# Can look at this link to help connect to the NYT
+# https://devsblog.hashnode.dev/wordle-bot-python
 
 # Gets all allowed words
 valid_words_file = "valid_wordle_words.txt"
@@ -7,6 +12,27 @@ valid_words_file = "valid_wordle_words.txt"
 with open(valid_words_file, 'r') as file:
     # Read lines from the file and create a list of words
     all_current_words = [line.strip() for line in file]
+
+def read_word_frequencies(file_path):
+    word_frequencies = {}
+
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                parts = line.split()
+                if len(parts) == 2:
+                    word = parts[0]
+                    frequency = float(parts[1])
+                    word_frequencies[word] = frequency
+                else:
+                    print(f"Ignoring invalid line: {line}")
+
+    except FileNotFoundError:
+        print(f"The file '{file_path}' was not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    return word_frequencies
 
 # Function to generate all combinations of Black, Yellow, and Green letters
 def generate_combinations():
@@ -43,57 +69,161 @@ def remove_wrong_letters(current_words, letter):
         if letter not in word:
             filtered_words.append(word)
 
-    print(len(current_words))
-    print(len(filtered_words))
+    return filtered_words
+
+def remove_wrong_letters_pos(current_words, letter, pos):
+    filtered_words = []
+
+    for word in current_words:
+        if word[pos] != letter:
+            filtered_words.append(word)
 
     return filtered_words
 
 
 def update_current_words(current_words, word, comb):
     cnt = 0
-    new_current_words = current_words
-
+    combos = []
     for letter, status in zip(word, comb):
-        #print(letter)
-        #print(status)
+        combos.append(letter + status)
         if status == "Y":
-            new_current_words = remove_misplaced_words(new_current_words, letter, cnt)
+            current_words = remove_misplaced_words(current_words, letter, cnt)
         if status == "B":
-            new_current_words = remove_wrong_letters(new_current_words, letter)
+            if (letter + "G") in combos:
+                current_words = remove_wrong_letters_pos(current_words, letter, cnt)
+            elif (letter + "Y") in combos:
+                current_words = remove_wrong_letters_pos(current_words, letter, cnt)
+            else:
+                current_words = remove_wrong_letters(current_words, letter)
         if status == "G":
-            new_current_words = include_matched_words(new_current_words, letter, cnt)
+            current_words = include_matched_words(current_words, letter, cnt)
         cnt += 1
 
-    return new_current_words
+    return current_words
 
-def assign_scores(all_current_words):
+def calculate_total_sum(word_dict, word_list):
+    total_sum = sum(word_dict.get(word, 0) for word in word_list)
+    return total_sum
+
+def assign_scores(new_current_words):
     current_word_dict = dict()
-    new_current_words = all_current_words
+    #new_current_words = all_current_words
+    iterate_words = new_current_words
 
     all_combinations = generate_combinations()
     # 14855 is total allowed words
-    for word in all_current_words:
+    for word in iterate_words:
         total_matches = 0
+
         for comb in all_combinations:
+            new_current_words = iterate_words
             #print(word)
             #print(comb)
-            #print(len(new_current_words))
-            new_current_words = update_current_words(all_current_words, word, comb)
-            #print(len(new_current_words))
+            old = len(new_current_words)
+
+            new_current_words = update_current_words(new_current_words, word, comb)
+            comb_prob = len(new_current_words) / old
+            new = len(new_current_words) * comb_prob
+            #new = calculate_total_sum(freq_dict, new_current_words)
+            #print(new)
 
             ## Treating all matches the same. Can adjust this for word frequencies
-            total_matches += len(new_current_words)
+            #print(total_matches)
+            #print(new)
+            total_matches += new
             #print(total_matches)
             #print(new_current_words)
 
-        print(word + " " + str(total_matches) + " matches")
+        #print(word + " " + str(total_matches) + " matches")
+        #print(word + " " + str(word_frequency(word, 'en')))
         current_word_dict[word] = total_matches
-        break
 
-    print(current_word_dict)
+    #sorted_items = sorted(current_word_dict.items(), key=lambda x: x[1], reverse=True)
+    sorted_items = dict(sorted(current_word_dict.items(), key=lambda item: item[1]))
+    #print(sorted_items)
     return current_word_dict
+
+def words_above_benchmark(word_dict, benchmark):
+    above_benchmark_words = [word for word, value in word_dict.items() if value > benchmark]
+    return above_benchmark_words
+
+def words_below_benchmark(word_dict, benchmark):
+    above_benchmark_words = [word for word, value in word_dict.items() if value < benchmark]
+    return above_benchmark_words
+
+def read_file_and_create_dict(file_path):
+    word_dict = {}
+
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                parts = line.split()
+                if len(parts) == 3:
+                    word = parts[0]
+                    number = float(parts[1])
+                    word_dict[word] = number
+                else:
+                    print(f"Ignoring invalid line: {line}")
+
+    except FileNotFoundError:
+        print(f"The file '{file_path}' was not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    # Sort the dictionary based on values in ascending order
+    sorted_word_dict = dict(sorted(word_dict.items(), key=lambda item: item[1]))
+
+    return sorted_word_dict
+
+def get_feedback(word):
+    while True:
+        user_input = input(f"Enter a 5-letter string with B, G, or Y for the word '{word}': ").strip().upper()
+
+        if len(user_input) == 5 and all(letter in "BGY" for letter in user_input):
+            return user_input
+        else:
+            print("Invalid input. Please enter a 5-letter string with B, G, or Y.")
+
+def play_wordle_bot():
+    file_path = "word_frequencies.txt"
+    frequency_dict = read_word_frequencies(file_path)
+    most_likely_words = words_above_benchmark(frequency_dict, 5.0e-07)
+    most_likely_matches = read_file_and_create_dict("matches.txt")
+    best_matches = words_below_benchmark(most_likely_matches, 300)
+    # print(len(all_current_words))
+    # print(len(most_likely_words))
+    # print(len(best_matches))
+    starting_word = random.choice(best_matches)
+    #starting_word = best_matches[0]
+    # print(starting_word)
+    all_guesses = []
+
+    all_combinations = generate_combinations()
+    for i in range(6):
+        # if (len(most_likely_words) == 1):
+        #     print("YOU FOUND THE WORD! It is: " + most_likely_words[0])
+        #     break
+        all_guesses.append(starting_word)
+        comb = get_feedback(starting_word)
+        if (comb.lower() == "ggggg"):
+            print("CORRECT. The word is: " + starting_word)
+            break
+        print(len(most_likely_words))
+        most_likely_words = update_current_words(most_likely_words, starting_word, comb)
+        print(len(most_likely_words))
+        current_word_dict = assign_scores(most_likely_words)
+        print(current_word_dict)
+        starting_word = min(current_word_dict, key=current_word_dict.get)
+        # starting_word = current_word_dict.keys()[0]
+        #print("New starting word is " + starting_word)
+
+    print(all_guesses)
+    # play_wordle(best_mat)
+    # print(most_likely_words)
+    # print(frequency_dict)
+    # current_word_dict = assign_scores(most_likely_words, frequency_dict, most_likely_matches)
 
 if __name__ == "__main__":
 
-    current_word_dict = assign_scores(all_current_words)
+    play_wordle_bot()
 
