@@ -184,7 +184,24 @@ def get_feedback(word):
         else:
             print("Invalid input. Please enter a 5-letter string with B, G, or Y.")
 
-def play_wordle_bot():
+def get_feedback_env(word, correct_word):
+    result = ""
+
+    for i in range(len(word)):
+        if word[i] == correct_word[i]:
+            result += "G"  # Same letter in the same position
+        elif word[i] in correct_word:
+            result += "Y"  # Same letter, but different position
+        else:
+            result += "B"  # Letter not in the correct word
+    #print(result)
+    return result
+
+def wordle_env(correct_word):
+    play_wordle_bot(correct_word)
+    return
+
+def play_wordle_bot(correct_word):
     file_path = "word_frequencies.txt"
     frequency_dict = read_word_frequencies(file_path)
     most_likely_words = words_above_benchmark(frequency_dict, 5.0e-07)
@@ -204,15 +221,16 @@ def play_wordle_bot():
         #     print("YOU FOUND THE WORD! It is: " + most_likely_words[0])
         #     break
         all_guesses.append(starting_word)
-        comb = get_feedback(starting_word)
+        comb = get_feedback_env(starting_word, correct_word)
         if (comb.lower() == "ggggg"):
-            print("CORRECT. The word is: " + starting_word)
+            #print("CORRECT. The word is: " + starting_word)
             break
-        print(len(most_likely_words))
+        #print(len(most_likely_words))
         most_likely_words = update_current_words(most_likely_words, starting_word, comb)
-        print(len(most_likely_words))
+        #print(len(most_likely_words))
         current_word_dict = assign_scores(most_likely_words)
-        print(current_word_dict)
+        #print(starting_word)
+        #print(current_word_dict)
         starting_word = min(current_word_dict, key=current_word_dict.get)
         # starting_word = current_word_dict.keys()[0]
         #print("New starting word is " + starting_word)
@@ -225,5 +243,17 @@ def play_wordle_bot():
 
 if __name__ == "__main__":
 
-    play_wordle_bot()
+    # Open the file in read mode
+    with open("answer_list.txt", 'r') as file:
+        # Read lines from the file and create a list of words
+        answer_list = [line.strip() for line in file]
+    #chosen_answer = random.choice(answer_list)
+    #chosen_answer = "wooer"
+    #print(chosen_answer)
+
+    for chosen_answer in answer_list:
+        try:
+            wordle_env(chosen_answer)
+        except:
+            print(chosen_answer + " does not work")
 

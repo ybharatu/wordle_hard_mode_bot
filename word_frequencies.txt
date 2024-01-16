@@ -8439,7 +8439,7 @@ nimps 0.0
 niner 2.04e-07
 nines 6.92e-07
 ninja 7.41e-06
-ninny 8.51e-08
+ninny 8.51e-07
 ninon 5.62e-08
 ninta 0.0
 ninth 1.17e-05
@@ -14431,7 +14431,7 @@ wonts 0.0
 woods 2.82e-05
 woody 6.61e-06
 wooed 3.31e-07
-wooer 1.51e-08
+wooer 5.51e-07
 woofs 3.02e-08
 woofy 1.91e-08
 woold 0.0
