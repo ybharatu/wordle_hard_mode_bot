@@ -1,5 +1,6 @@
 from itertools import product
 import random
+import copy
 from wordfreq import word_frequency
 
 # Can look at this link to help connect to the NYT
@@ -198,11 +199,11 @@ def get_feedback_env(word, correct_word):
     return result
 
 def wordle_env(correct_word):
-    play_wordle_bot(correct_word)
-    return
+    return_val = play_wordle_bot(correct_word)
+    return return_val
 
 def play_wordle_bot(correct_word):
-    file_path = "word_frequencies.txt"
+    file_path = "word_frequencies_updated.txt"
     frequency_dict = read_word_frequencies(file_path)
     most_likely_words = words_above_benchmark(frequency_dict, 5.0e-07)
     most_likely_matches = read_file_and_create_dict("matches.txt")
@@ -216,7 +217,7 @@ def play_wordle_bot(correct_word):
     all_guesses = []
 
     all_combinations = generate_combinations()
-    for i in range(6):
+    for i in range(30):
         # if (len(most_likely_words) == 1):
         #     print("YOU FOUND THE WORD! It is: " + most_likely_words[0])
         #     break
@@ -235,7 +236,12 @@ def play_wordle_bot(correct_word):
         # starting_word = current_word_dict.keys()[0]
         #print("New starting word is " + starting_word)
 
-    print(all_guesses)
+    #print(all_guesses)
+    # with open("example.txt", "a") as file:
+    #     file.write(all_guesses)
+    #     file.write("\n")
+    all_guesses.append(len(all_guesses))
+    return all_guesses
     # play_wordle(best_mat)
     # print(most_likely_words)
     # print(frequency_dict)
@@ -253,7 +259,17 @@ if __name__ == "__main__":
 
     for chosen_answer in answer_list:
         try:
-            wordle_env(chosen_answer)
+            all_guesses = wordle_env(chosen_answer)
+            #print(all_guesses)
+
         except:
             print(chosen_answer + " does not work")
+            with open("example2.txt", "a") as file:
+                file.write(chosen_answer + " does not work")
+                file.write("\n")
+        finally:
+            print(str(all_guesses))
+            with open("example2.txt", "a") as file:
+                file.write(str(all_guesses))
+                file.write("\n")
 
