@@ -2,6 +2,11 @@ from itertools import product
 import random
 import copy
 from wordfreq import word_frequency
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
+import time
 
 # Can look at this link to help connect to the NYT
 # https://devsblog.hashnode.dev/wordle-bot-python
@@ -198,6 +203,39 @@ def get_feedback_env(word, correct_word):
     #print(result)
     return result
 
+def get_feedback_web(driver, word, row):
+    print("Getting Feedback")
+    result = ""
+    row_label = "Row " + str(row)
+    #Tile-module_tile__UWEHN
+    # Find all tiles in the specified row
+    row_data_states = []
+    row_selector = f'[aria-label="{row_label}"]'
+
+    # Find the row element based on the aria-label
+    # <div class="Row-module_row__pwpBq" role="group" aria-label="Row 1"><div class="" style="animation-delay: 0ms;"><div class="Tile-module_tile__UWEHN" role="img" aria-roledescription="tile" aria-label="1st letter, A, absent" data-state="absent" data-animation="idle" data-testid="tile" aria-live="polite">a</div></div><div class="" style="animation-delay: 100ms;"><div class="Tile-module_tile__UWEHN" role="img" aria-roledescription="tile" aria-label="2nd letter, G, absent" data-state="absent" data-animation="idle" data-testid="tile" aria-live="polite">g</div></div><div class="" style="animation-delay: 200ms;"><div class="Tile-module_tile__UWEHN" role="img" aria-roledescription="tile" aria-label="3rd letter, R, present in another position" data-state="present" data-animation="idle" data-testid="tile" aria-live="polite">r</div></div><div class="" style="animation-delay: 300ms;"><div class="Tile-module_tile__UWEHN" role="img" aria-roledescription="tile" aria-label="4th letter, E, absent" data-state="absent" data-animation="idle" data-testid="tile" aria-live="polite">e</div></div><div class="" style="animation-delay: 400ms;"><div class="Tile-module_tile__UWEHN" role="img" aria-roledescription="tile" aria-label="5th letter, E, correct" data-state="correct" data-animation="idle" data-testid="tile" aria-live="polite">e</div></div></div>
+    row_element = driver.find_element(By.CSS_SELECTOR, row_selector)
+    row_attribute = row_element.get_attribute("class")
+    print(row_attribute)
+
+    # Find all tiles within the specified row
+    tiles = row_element.find_elements(By.CSS_SELECTOR, '.Tile-module_tile__UWEHN')
+
+    # Iterate over each tile to get its data-state property
+    for tile in tiles:
+        data_state = tile.get_attribute("data-state")
+        if data_state == 'absent':
+            result += "B"
+        if data_state == 'present':
+            result += "Y"
+        if data_state == 'correct':
+            result += "G"
+        row_data_states.append(data_state)
+    print(row_data_states)
+    print(result)
+    print("Done with Feedback")
+    return result
+
 def wordle_env(correct_word):
     return_val = play_wordle_bot(correct_word)
     return return_val
@@ -247,6 +285,76 @@ def play_wordle_bot(correct_word):
     # print(frequency_dict)
     # current_word_dict = assign_scores(most_likely_words, frequency_dict, most_likely_matches)
 
+def type_word(driver, word):
+    #input_box = driver.find_element_by_id("input_box_id")  # Change to the ID of the input box where you want to type the word
+
+    # Create an ActionChains object
+    actions = ActionChains(driver)
+
+    # Click on the input box to ensure it is focused
+    #actions.click(input_box)
+
+    # Type each letter one by one
+    for letter in word:
+        # Use key_down to press the key
+        actions.key_down(letter)
+        # Use key_up to release the key
+        actions.key_up(letter)
+        time.sleep(1)  # Add a one-second delay after typing each letter
+
+    # Press Enter key
+    actions.key_down(Keys.ENTER)
+    actions.key_up(Keys.ENTER)
+
+    # Perform the actions
+    actions.perform()
+
+def play_wordle_bot_2(driver):
+    file_path = "word_frequencies_updated.txt"
+    frequency_dict = read_word_frequencies(file_path)
+    most_likely_words = words_above_benchmark(frequency_dict, 5.0e-07)
+    most_likely_matches = read_file_and_create_dict("matches.txt")
+    best_matches = words_below_benchmark(most_likely_matches, 300)
+    # print(len(all_current_words))
+    # print(len(most_likely_words))
+    # print(len(best_matches))
+    starting_word = random.choice(best_matches)
+    #starting_word = best_matches[0]
+    # print(starting_word)
+    all_guesses = []
+
+    all_combinations = generate_combinations()
+    for i in range(30):
+        # if (len(most_likely_words) == 1):
+        #     print("YOU FOUND THE WORD! It is: " + most_likely_words[0])
+        #     break
+        all_guesses.append(starting_word)
+        type_word(driver, starting_word)
+        time.sleep(3)
+        comb = get_feedback_web(driver, starting_word, i+1)
+        if (comb.lower() == "ggggg"):
+            #print("CORRECT. The word is: " + starting_word)
+            break
+        #print(len(most_likely_words))
+        most_likely_words = update_current_words(most_likely_words, starting_word, comb)
+        #print(len(most_likely_words))
+        current_word_dict = assign_scores(most_likely_words)
+        #print(starting_word)
+        #print(current_word_dict)
+        starting_word = min(current_word_dict, key=current_word_dict.get)
+        # starting_word = current_word_dict.keys()[0]
+        #print("New starting word is " + starting_word)
+
+    #print(all_guesses)
+    # with open("example.txt", "a") as file:
+    #     file.write(all_guesses)
+    #     file.write("\n")
+    all_guesses.append(len(all_guesses))
+    return all_guesses
+    # play_wordle(best_mat)
+    # print(most_likely_words)
+    # print(frequency_dict)
+    # current_word_dict = assign_scores(most_likely_words, frequency_dict, most_likely_matches)
 if __name__ == "__main__":
 
     # Open the file in read mode
