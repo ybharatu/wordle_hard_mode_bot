@@ -300,7 +300,7 @@ def type_word(driver, word):
         actions.key_down(letter)
         # Use key_up to release the key
         actions.key_up(letter)
-        time.sleep(1)  # Add a one-second delay after typing each letter
+        #time.sleep(1)  # Add a one-second delay after typing each letter
 
     # Press Enter key
     actions.key_down(Keys.ENTER)
