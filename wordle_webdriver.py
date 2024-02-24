@@ -10,6 +10,8 @@ from email.mime.multipart import MIMEMultipart
 import storage
 from openai import OpenAI
 client = OpenAI()
+import os
+from datetime import datetime
 
 def goaway_popup(driver_instance):
     close_button = driver_instance.find_element(By.CLASS_NAME, 'Modal-module_closeIcon__TcEKb')
@@ -21,6 +23,25 @@ def click_play(driver_instance):
     play_button = driver_instance.find_element(By.CSS_SELECTOR, '[data-testid="Play"]')
     play_button.click()
     print("Clicking Play button")
+
+
+def write_poem_to_file(poem):
+    # Get the current date
+    current_date = datetime.now()
+
+    # Format the date as required
+    formatted_date = current_date.strftime("%b_%d_%Y")
+
+    # Create the poems directory if it doesn't exist
+    poems_dir = os.path.join(os.path.dirname(__file__), "poems")
+    os.makedirs(poems_dir, exist_ok=True)
+
+    # Construct the filename
+    filename = os.path.join(poems_dir, f"{formatted_date}.txt")
+
+    # Write the poem to the file
+    with open(filename, 'w') as f:
+        f.write(poem)
 
 def EmailNotifyRun(all_guesses):
     num_tries = all_guesses[-1]
@@ -71,6 +92,7 @@ def EmailNotifyRun(all_guesses):
     # Get the text content of the response
     poem = gpt_response.message.content
     print(poem)
+    write_poem_to_file(poem)
     body += poem
 
     msg.attach(MIMEText(body, 'plain'))
