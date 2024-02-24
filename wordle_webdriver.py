@@ -8,6 +8,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import storage
+from openai import OpenAI
+client = OpenAI()
 
 def goaway_popup(driver_instance):
     close_button = driver_instance.find_element(By.CLASS_NAME, 'Modal-module_closeIcon__TcEKb')
@@ -44,12 +46,32 @@ def EmailNotifyRun(all_guesses):
 
     # Add message body
     body = ""
+    all_words = ""
     if num_tries < 7:
         body += "Success!! Wordle Completed in " + str(num_tries) + " attempts!\nWords Guessed:\n"
     else:
         body += "Failure!! :("
     for g in guesses:
         body += g + "\n"
+        all_words += g + " "
+    body += "\n\n"
+
+    completion = client.chat.completions.create(
+        model="gpt-3.5-turbo-0125",
+        messages=[
+            {"role": "system",
+             "content": "You are an incredible poet drawing inspiration from all world-famous poets and poetry. You can make poetry out of anything. I can give you a series of random words and then can you make a poem that includes all of them."},
+            {"role": "user", "content": all_words}
+        ]
+    )
+    # Access the first choice from the completion
+    gpt_response = completion.choices[0]
+    #print(gpt_response)
+
+    # Get the text content of the response
+    poem = gpt_response.message.content
+    print(poem)
+    body += poem
 
     msg.attach(MIMEText(body, 'plain'))
 
@@ -75,6 +97,6 @@ all_guesses = play_wordle_bot_2(driver)
 print(all_guesses)
 EmailNotifyRun(all_guesses)
 
-time.sleep(10)
+time.sleep(5)
 
 driver.quit()

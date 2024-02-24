@@ -270,7 +270,11 @@ def play_wordle_bot(correct_word):
         current_word_dict = assign_scores(most_likely_words)
         #print(starting_word)
         #print(current_word_dict)
-        starting_word = min(current_word_dict, key=current_word_dict.get)
+        try:
+            starting_word = min(current_word_dict, key=current_word_dict.get)
+        except:
+            print(current_word_dict)
+            break
         # starting_word = current_word_dict.keys()[0]
         #print("New starting word is " + starting_word)
 
