@@ -28,12 +28,13 @@ def extract_info(file_path):
 # Main function to iterate over .txt files in directory
 def main():
     directory = '.'  # Assuming current directory, change it if needed
-    for file_name in os.listdir(directory):
-#        print(file_name)
-        if file_name.endswith('.txt'):
-            file_path = os.path.join(directory, file_name)
-            poem_info = extract_info(file_path)
-            print(poem_info)
+    txt_files = [file_name for file_name in os.listdir(directory) if file_name.endswith('.txt')]
+    # Sort files based on date in filename
+    txt_files.sort(key=lambda x: datetime.strptime(os.path.splitext(x)[0], "%b_%d_%Y"))
+    for file_name in txt_files:
+        file_path = os.path.join(directory, file_name)
+        poem_info = extract_info(file_path)
+        print(str(poem_info) + ",")
 
 if __name__ == "__main__":
     main()
