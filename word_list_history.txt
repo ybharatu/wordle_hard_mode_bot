@@ -1,3 +1,6 @@
 Mar_07_2024 ['pause', 'noire', 'clone'] 3
 Mar_08_2024 ['spite', 'alder', 'relay', 'early'] 4
 Mar_09_2024 ['lawns', 'tired', 'cover', 'cheer'] 4
+Mar_10_2024 ['sofas', 'parse', 'grasp'] 3
+Mar_11_2024 ['votes', 'spare', 'pesky'] 3
+Mar_12_2024 ['licks', 'rated', 'began', 'heavy', 'heave'] 5
