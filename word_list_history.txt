@@ -4,3 +4,11 @@ Mar_09_2024 ['lawns', 'tired', 'cover', 'cheer'] 4
 Mar_10_2024 ['sofas', 'parse', 'grasp'] 3
 Mar_11_2024 ['votes', 'spare', 'pesky'] 3
 Mar_12_2024 ['licks', 'rated', 'began', 'heavy', 'heave'] 5
+Mar_13_2024 ['storm', 'dolce', 'focal', 'local'] 4
+Mar_15_2024 ['rains', 'corey', 'demur', 'brute', 'erupt'] 5
+Mar_16_2024 ['usage', 'crony', 'toxin'] 3
+Mar_17_2024 ['metre', 'short', 'snort'] 3
+Mar_18_2024 ['sores', 'spate', 'spelt'] 3
+Mar_20_2024 ['shake', 'droit', 'boing', 'lingo'] 4
+Mar_21_2024 ['serra', 'stale', 'shape', 'shade'] 4
+Mar_22_2024 ['hauls', 'crane', 'acted', 'decay'] 4
