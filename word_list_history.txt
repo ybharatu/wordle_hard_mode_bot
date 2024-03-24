@@ -12,3 +12,5 @@ Mar_18_2024 ['sores', 'spate', 'spelt'] 3
 Mar_20_2024 ['shake', 'droit', 'boing', 'lingo'] 4
 Mar_21_2024 ['serra', 'stale', 'shape', 'shade'] 4
 Mar_22_2024 ['hauls', 'crane', 'acted', 'decay'] 4
+Mar_23_2024 ['sloth', 'dares', 'miser', 'risen'] 4
+Mar_24_2024 ['cents', 'alter', 'filet', 'towel'] 4
