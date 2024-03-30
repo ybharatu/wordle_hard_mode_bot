@@ -14,3 +14,9 @@ Mar_21_2024 ['serra', 'stale', 'shape', 'shade'] 4
 Mar_22_2024 ['hauls', 'crane', 'acted', 'decay'] 4
 Mar_23_2024 ['sloth', 'dares', 'miser', 'risen'] 4
 Mar_24_2024 ['cents', 'alter', 'filet', 'towel'] 4
+Mar_25_2024 ['first', 'lanes', 'sadly', 'sally'] 4
+Mar_26_2024 ['acute', 'rains', 'harpy', 'mayor'] 4
+Mar_27_2024 ['tales', 'shout', 'stunk', 'stung'] 4
+Mar_28_2024 ['exist', 'dares', 'shape', 'speak'] 4
+Mar_29_2024 ['stack', 'glare', 'realm'] 3
+Mar_30_2024 ['wraps', 'tired', 'mercy', 'force'] 4
