@@ -20,3 +20,7 @@ Mar_27_2024 ['tales', 'shout', 'stunk', 'stung'] 4
 Mar_28_2024 ['exist', 'dares', 'shape', 'speak'] 4
 Mar_29_2024 ['stack', 'glare', 'realm'] 3
 Mar_30_2024 ['wraps', 'tired', 'mercy', 'force'] 4
+Mar_31_2024 ['glide', 'carts', 'tawny', 'taboo'] 4
+Apr_01_2024 ['helps', 'train', 'frond'] 3
+Apr_04_2024 ['wards', 'conte', 'climb'] 3
+Apr_05_2024 ['kinds', 'stipe', 'foist', 'waist', 'wrist'] 5
