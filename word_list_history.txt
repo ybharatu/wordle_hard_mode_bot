@@ -24,3 +24,7 @@ Mar_31_2024 ['glide', 'carts', 'tawny', 'taboo'] 4
 Apr_01_2024 ['helps', 'train', 'frond'] 3
 Apr_04_2024 ['wards', 'conte', 'climb'] 3
 Apr_05_2024 ['kinds', 'stipe', 'foist', 'waist', 'wrist'] 5
+Apr_06_2024 ['cline', 'tonic', 'finch'] 3
+Apr_07_2024 ['pearl', 'tails', 'voila'] 3
+Apr_09_2024 ['navel', 'terms', 'mercy', 'merge'] 4
+Apr_10_2024 ['smear', 'droit', 'broth'] 3
