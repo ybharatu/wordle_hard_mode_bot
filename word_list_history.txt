@@ -28,3 +28,14 @@ Apr_06_2024 ['cline', 'tonic', 'finch'] 3
 Apr_07_2024 ['pearl', 'tails', 'voila'] 3
 Apr_09_2024 ['navel', 'terms', 'mercy', 'merge'] 4
 Apr_10_2024 ['smear', 'droit', 'broth'] 3
+Apr_12_2024 ['sweet', 'rowan', 'whiny'] 3
+Apr_14_2024 ['pleas', 'blimp'] 2
+Apr_15_2024 ['slimy', 'diner', 'cutie', 'equip'] 4
+Apr_16_2024 ['sends', 'stain', 'shank'] 3
+Apr_18_2024 ['haste', 'rated', 'facet'] 3
+Apr_20_2024 ['lords', 'lived', 'lucid'] 3
+Apr_21_2024 ['flora', 'coles', 'moldy', 'golly', 'holly', 'jolly'] 6
+Apr_22_2024 ['decks', 'stare', 'laser'] 3
+Apr_25_2024 ['still', 'eatin', 'intro'] 3
+Apr_26_2024 ['hears', 'talon', 'magic', 'vapid'] 4
+Apr_27_2024 ['clips', 'blare', 'glean', 'gleam'] 4
