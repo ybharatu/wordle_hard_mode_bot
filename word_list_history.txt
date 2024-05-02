@@ -39,3 +39,7 @@ Apr_22_2024 ['decks', 'stare', 'laser'] 3
 Apr_25_2024 ['still', 'eatin', 'intro'] 3
 Apr_26_2024 ['hears', 'talon', 'magic', 'vapid'] 4
 Apr_27_2024 ['clips', 'blare', 'glean', 'gleam'] 4
+Apr_28_2024 ['peril', 'prose', 'prude', 'prune'] 4
+Apr_29_2024 ['tired', 'snort', 'graft', 'craft'] 4
+Apr_30_2024 ['juris', 'cedar', 'prong', 'prowl'] 4
+May_02_2024 ['pedro', 'tales', 'flesh', 'slice'] 4
