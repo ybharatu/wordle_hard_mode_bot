@@ -97,7 +97,7 @@ def EmailNotifyRun(all_guesses):
         model="gpt-4-0125-preview",
         messages=[
             {"role": "system",
-             "content": "You are an incredible poet drawing inspiration from all world-famous poets and poetry. You can make poetry out of anything. I can give you a series of random words and then can you make a poem that includes all of them. Create a title after creating the poem."},
+             "content": "You are an incredible poet drawing inspiration from all world-famous poets and poetry. You can make poetry out of anything. I can give you a series of random words and then can you make a poem that includes all of them. Make sure you don't talk about whispering or shadows. Create a title after creating the poem."},
             {"role": "user", "content": all_words}
         ]
     )

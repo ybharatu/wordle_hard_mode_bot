@@ -43,3 +43,14 @@ Apr_28_2024 ['peril', 'prose', 'prude', 'prune'] 4
 Apr_29_2024 ['tired', 'snort', 'graft', 'craft'] 4
 Apr_30_2024 ['juris', 'cedar', 'prong', 'prowl'] 4
 May_02_2024 ['pedro', 'tales', 'flesh', 'slice'] 4
+May_03_2024 ['heard', 'lines', 'envoy', 'ebony'] 4
+May_04_2024 ['sited', 'learn', 'gable', 'halve', 'value'] 5
+May_06_2024 ['servo', 'salve', 'shave'] 3
+May_07_2024 ['metal', 'mints', 'musty'] 3
+May_08_2024 ['oiled', 'nitro', 'kiosk', 'pious'] 4
+May_09_2024 ['fairy', 'dorky', 'jerky'] 3
+May_10_2024 ['shiny', 'riled', 'media'] 3
+May_11_2024 ['nicer', 'lifts', 'tidal'] 3
+May_12_2024 ['boars', 'tenor', 'other', 'outer'] 4
+Jun_03_2024 ['cribs', 'stare', 'stark'] 3
+Jun_05_2024 ['darts', 'crane', 'argon', 'organ'] 4
