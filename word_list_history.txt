@@ -54,3 +54,7 @@ May_11_2024 ['nicer', 'lifts', 'tidal'] 3
 May_12_2024 ['boars', 'tenor', 'other', 'outer'] 4
 Jun_03_2024 ['cribs', 'stare', 'stark'] 3
 Jun_05_2024 ['darts', 'crane', 'argon', 'organ'] 4
+Jun_06_2024 ['sears', 'tried', 'outer', 'ether'] 4
+Jun_07_2024 ['cults', 'delay', 'below', 'felon', 'melon'] 5
+Jun_08_2024 ['short', 'hyena', 'hence'] 3
+Jun_09_2024 ['monde', 'drops', 'broad', 'crowd'] 4
