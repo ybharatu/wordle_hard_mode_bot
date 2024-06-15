@@ -58,3 +58,8 @@ Jun_06_2024 ['sears', 'tried', 'outer', 'ether'] 4
 Jun_07_2024 ['cults', 'delay', 'below', 'felon', 'melon'] 5
 Jun_08_2024 ['short', 'hyena', 'hence'] 3
 Jun_09_2024 ['monde', 'drops', 'broad', 'crowd'] 4
+Jun_10_2024 ['pleas', 'cairn', 'mangy', 'mango', 'manga'] 5
+Jun_11_2024 ['parks', 'stone', 'slung', 'swung'] 4
+Jun_13_2024 ['shiny', 'tunes', 'angst'] 3
+Jun_14_2024 ['basil', 'layer', 'talon', 'fault', 'vault'] 5
+Jun_15_2024 ['drove', 'broad', 'crowd', 'frond', 'proud'] 5
