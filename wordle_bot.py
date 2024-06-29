@@ -240,10 +240,34 @@ def wordle_env(correct_word):
     return_val = play_wordle_bot(correct_word)
     return return_val
 
+def get_last_words(filename):
+    last_words = []
+    final_last_words = []
+    with open(filename, 'r') as f:
+        for line in f:
+            words = line.split()  # Split the line into words
+            last_word = words[-2]  # Get the last word
+            last_word = extract_string_between_quotes(last_word)
+            last_word = last_word.split("'")[1]
+            last_words.append(last_word)  # Add it to the list
+    for w in last_words:
+        final_last_words.append(str(w))
+
+    return final_last_words
+
+def extract_string_between_quotes(input_string):
+    # Split the string at single quotes and get the elements between them
+    parts = input_string.split("'")
+    return str(parts[1::2])  # Get every second element (between the quotes)
+
 def play_wordle_bot(correct_word):
     file_path = "word_frequencies_updated.txt"
     frequency_dict = read_word_frequencies(file_path)
     most_likely_words = words_above_benchmark(frequency_dict, 5.0e-07)
+    last_words = get_last_words("word_list_history.txt")
+    print(last_words)
+	# Remove all occurrences of elements from listB in listA
+    most_likely_words = [i for i in most_likely_words if i not in last_words]
     most_likely_matches = read_file_and_create_dict("matches.txt")
     best_matches = words_below_benchmark(most_likely_matches, 300)
     # print(len(all_current_words))
@@ -319,6 +343,12 @@ def play_wordle_bot_2(driver):
     most_likely_words = words_above_benchmark(frequency_dict, 5.0e-07)
     most_likely_matches = read_file_and_create_dict("matches.txt")
     best_matches = words_below_benchmark(most_likely_matches, 300)
+    last_words = get_last_words("word_list_history.txt")
+    print(last_words)
+    print(len(most_likely_words))
+	# Remove all occurrences of elements from listB in listA
+    most_likely_words = [i for i in most_likely_words if i not in last_words]
+    print(len(most_likely_words))
     # print(len(all_current_words))
     # print(len(most_likely_words))
     # print(len(best_matches))

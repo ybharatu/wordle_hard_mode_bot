@@ -63,3 +63,12 @@ Jun_11_2024 ['parks', 'stone', 'slung', 'swung'] 4
 Jun_13_2024 ['shiny', 'tunes', 'angst'] 3
 Jun_14_2024 ['basil', 'layer', 'talon', 'fault', 'vault'] 5
 Jun_15_2024 ['drove', 'broad', 'crowd', 'frond', 'proud'] 5
+Jun_16_2024 ['relay', 'trois', 'brick', 'grind'] 4
+Jun_17_2024 ['spawn', 'plier', 'prior'] 3
+Jun_21_2024 ['jokes', 'laity', 'faint', 'paint'] 4
+Jun_22_2024 ['lacey', 'price', 'edict'] 3
+Jun_23_2024 ['liber', 'bloke', 'bugle'] 3
+Jun_24_2024 ['spoke', 'moran', 'godly', 'dolly'] 4
+Jun_26_2024 ['piano', 'lands', 'knead'] 3
+Jun_27_2024 ['bonds', 'droit', 'ardor', 'order'] 4
+Jun_29_2024 ['chose', 'later', 'bread', 'zebra'] 4
