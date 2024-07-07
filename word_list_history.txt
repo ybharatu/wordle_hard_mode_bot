@@ -72,3 +72,9 @@ Jun_24_2024 ['spoke', 'moran', 'godly', 'dolly'] 4
 Jun_26_2024 ['piano', 'lands', 'knead'] 3
 Jun_27_2024 ['bonds', 'droit', 'ardor', 'order'] 4
 Jun_29_2024 ['chose', 'later', 'bread', 'zebra'] 4
+Jul_02_2024 ['petri', 'nails', 'anvil', 'inlay'] 4
+Jul_03_2024 ['swine', 'trial', 'thick', 'thigh'] 4
+Jul_04_2024 ['shove', 'alter', 'debit', 'debut'] 4
+Jul_05_2024 ['trams', 'crisp', 'crush'] 3
+Jul_06_2024 ['traps', 'shine', 'sulky', 'scoff'] 4
+Jul_07_2024 ['hades', 'talon', 'bacon', 'canon'] 4
