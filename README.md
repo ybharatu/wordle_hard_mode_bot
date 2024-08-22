@@ -112,3 +112,93 @@ Jun_03_2024 ['cribs', 'stare', 'stark'] 3
 
 Jun_05_2024 ['darts', 'crane', 'argon', 'organ'] 4
 
+Jun_06_2024 ['sears', 'tried', 'outer', 'ether'] 4
+
+Jun_07_2024 ['cults', 'delay', 'below', 'felon', 'melon'] 5
+
+Jun_08_2024 ['short', 'hyena', 'hence'] 3
+
+Jun_09_2024 ['monde', 'drops', 'broad', 'crowd'] 4
+
+Jun_10_2024 ['pleas', 'cairn', 'mangy', 'mango', 'manga'] 5
+
+Jun_11_2024 ['parks', 'stone', 'slung', 'swung'] 4
+
+Jun_13_2024 ['shiny', 'tunes', 'angst'] 3
+
+Jun_14_2024 ['basil', 'layer', 'talon', 'fault', 'vault'] 5
+
+Jun_15_2024 ['drove', 'broad', 'crowd', 'frond', 'proud'] 5
+
+Jun_16_2024 ['relay', 'trois', 'brick', 'grind'] 4
+
+Jun_17_2024 ['spawn', 'plier', 'prior'] 3
+
+Jun_21_2024 ['jokes', 'laity', 'faint', 'paint'] 4
+
+Jun_22_2024 ['lacey', 'price', 'edict'] 3
+
+Jun_23_2024 ['liber', 'bloke', 'bugle'] 3
+
+Jun_24_2024 ['spoke', 'moran', 'godly', 'dolly'] 4
+
+Jun_26_2024 ['piano', 'lands', 'knead'] 3
+
+Jun_27_2024 ['bonds', 'droit', 'ardor', 'order'] 4
+
+Jun_29_2024 ['chose', 'later', 'bread', 'zebra'] 4
+
+Jul_02_2024 ['petri', 'nails', 'anvil', 'inlay'] 4
+
+Jul_03_2024 ['swine', 'trial', 'thick', 'thigh'] 4
+
+Jul_04_2024 ['shove', 'alter', 'debit', 'debut'] 4
+
+Jul_05_2024 ['trams', 'crisp', 'crush'] 3
+
+Jul_06_2024 ['traps', 'shine', 'sulky', 'scoff'] 4
+
+Jul_07_2024 ['hades', 'talon', 'bacon', 'canon'] 4
+
+Jul_08_2024 ['cruel', 'deans', 'skate', 'shame', 'shape'] 5
+
+Jul_09_2024 ['yells', 'alder', 'blare'] 3
+
+Jul_10_2024 ['reuse', 'count', 'daunt', 'gaunt'] 4
+
+Jul_11_2024 ['mercy', 'comet', 'cameo'] 3
+
+Jul_12_2024 ['skate', 'irony', 'dimly', 'hippy', 'fizzy', 'jiffy'] 6
+
+Jul_16_2024 ['asses', 'noire', 'extol', 'bebop', 'decoy'] 5
+
+Jul_17_2024 ['manic', 'rites', 'utile', 'quite'] 4
+
+Jul_19_2024 ['sahib', 'loner', 'deter', 'fever', 'refer'] 5
+
+Jul_20_2024 ['brute', 'saint', 'shaft'] 3
+
+Jul_29_2024 ['shave', 'strep', 'super'] 3
+
+Jul_30_2024 ['chair', 'mares', 'feral'] 3
+
+Jul_31_2024 ['wired', 'slate', 'phone', 'penne'] 4
+
+Aug_01_2024 ['oiled', 'plans', 'chalk'] 3
+
+Aug_04_2024 ['stare', 'older', 'loner', 'lover', 'lower'] 5
+
+Aug_05_2024 ['tiles', 'parse', 'shone', 'ensue'] 4
+
+Aug_06_2024 ['kilns', 'levin', 'anvil'] 3
+
+Aug_09_2024 ['faire', 'louse', 'ounce'] 3
+
+Aug_13_2024 ['films', 'trice', 'eking', 'deign', 'neigh'] 5
+
+Aug_19_2024 ['guile', 'rates', 'deter', 'meter'] 4
+
+Aug_20_2024 ['tubes', 'crane', 'medal', 'delay'] 4
+
+Aug_22_2024 ['stern', 'tamer', 'brute'] 3
+
